@@ -54,9 +54,9 @@ namespace DesafioFundamentos.Models
                 try
                 {
                     using (StreamWriter sw = new StreamWriter(caminhoArquivo, true))
-                {
-                    sw.WriteLine(texto);
-                }
+                    {
+                        sw.WriteLine(texto);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -84,6 +84,27 @@ namespace DesafioFundamentos.Models
             else
             {
                 Console.WriteLine("Não há veículos estacionados.");
+            }
+        }
+
+        public void ConsultarHistorico()
+        {
+            string caminhoArquivo = "C:/Caminhos-dos-seus-diretórios/historicoPagamento.txt";
+            if (File.Exists(caminhoArquivo))
+            {
+                // Ler o arquivo
+                using (StreamReader sr = new StreamReader(caminhoArquivo))
+                {
+                    string linha;
+                    while ((linha = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(linha);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("O arquivo não foi encontrado.");
             }
         }
     }
